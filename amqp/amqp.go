@@ -9,7 +9,6 @@ import (
 	"encoding/gob"
 	"fmt"
 	"sync"
-	"time"
 
 	"github.com/ThreeDotsLabs/watermill"
 	"github.com/ThreeDotsLabs/watermill-amqp/v2/pkg/amqp"
@@ -177,8 +176,6 @@ func (svc *service) PublishWithConnection(queueName, jobName string, payload []b
 	msg := message.NewMessage(watermill.NewUUID(), payload)
 	msg.Metadata.Set("job", jobName)
 	msg.Metadata.Set("queue", queueName)
-	ctx, _ := context.WithTimeout(context.Background(), 1*time.Second)
-	msg.SetContext(ctx)
 	err := p.Publish(queueName, msg)
 	if err != nil {
 		panic(err)
