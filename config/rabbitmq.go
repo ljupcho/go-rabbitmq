@@ -1,9 +1,5 @@
 package config
 
-import (
-	"time"
-)
-
 type (
 	QueueConfig struct {
 		Name         string
@@ -14,14 +10,13 @@ type (
 	Queues []QueueConfig
 
 	RabbitMqConfig struct {
-		Schema               string
-		Username             string
-		Password             string
-		Host                 string
-		Port                 string
-		Vhost                string
-		ConnectionName       string
-		ChannelNotifyTimeout time.Duration
+		Schema         string
+		Username       string
+		Password       string
+		Host           string
+		Port           string
+		Vhost          string
+		ConnectionName string
 	}
 
 	RateLimiter struct {
@@ -55,14 +50,13 @@ func GetQueues() Queues {
 // GetRabbitMqConfig sets credentials to rabbitmq server.
 func GetRabbitMqConfig() *RabbitMqConfig {
 	config := &RabbitMqConfig{
-		Schema:               "amqp",
-		Username:             "guest",
-		Password:             "guest",
-		Host:                 "127.0.0.1",
-		Port:                 "5672",
-		Vhost:                "v01",
-		ConnectionName:       "V01",
-		ChannelNotifyTimeout: 100 * time.Millisecond,
+		Schema:         "amqp",
+		Username:       "guest",
+		Password:       "guest",
+		Host:           "127.0.0.1",
+		Port:           "5672",
+		Vhost:          "demo",
+		ConnectionName: "demo",
 	}
 
 	return config
